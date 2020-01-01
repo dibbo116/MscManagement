@@ -1,0 +1,97 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% load static %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RUET MSC Student Management System ">
+
+    <title>RUET Msc Management System</title>
+
+
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+</head>
+
+<body  >
+  <div style="text-align: right">
+  <a href="{% url 'home' %}" type="button" class="btn btn-link" align="left">Back To Home</a>
+  </div>
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-danger" role="alert">
+  {{ message }}
+  </div>
+  {% endfor %}
+  {% endif %}
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+
+
+        <div class="row">
+
+          <div class="col-md-2"></div>
+            <div class="col-md-4  ">
+                <h2 >Msc Management System</h2>
+                <div class="row">
+                    <div class="col-md-3" >
+                      {% load static %}
+                        <img  src="{% static 'images/ruet logo.png'%}" alt=""  height="100px" width="117px">
+                    </div>
+                    <div class="col-md-9" align="left">
+                        <a href="{% url 'login' %}" type="button" class="btn btn-outline-primary">Student Login Panel</a></br>
+						</br>
+						<a href="{% url 'Teacherlogin' %}" type="button" class="btn btn-outline-secondary" >Teacher Login Panel</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                    <form class="m-t" method="post">
+                        {% csrf_token %}
+                        <h2 class="text-center mb-10">Student Login Form </h2>
+
+                                            <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Enter Email" required="">
+                        </div>
+                        <input type="hidden" name="type" value="6">
+                        <input type="hidden" name="type_name" value="student">
+
+                        <div class="form-group">
+                            <input type="password" name="password" class="form-control" placeholder="Enter Password" required="">
+                        </div>
+                        <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+                        <a href="#">
+                            <small>Forgot password?</small>
+                        </a>
+                                                <p class="text-muted text-center">
+                            <small>Do not have an account?</small>
+                        </p>
+                        <a href="{% url 'signup' %}" class="btn btn-sm btn-grey btn-block" >Create an account</a>
+
+</form>
+            </div>
+			<div class="col-md-2">
+
+        </div>
+        <hr/>
+
+
+
+
+
+
+</body>
+
+</html>

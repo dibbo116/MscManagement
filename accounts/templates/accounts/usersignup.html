@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RUET Msc Student Management System ">
+    <meta name="keywords" content="student management system, teacher management system">
+
+    <title>RUET Msc Management System</title>
+  
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+  <div style="text-align: right">
+  <a href="{% url 'teachersignup' %}" type="button" class="btn btn-link" align="left">Teacher Registration Form</a>
+    <a href="{% url 'home' %}" type="button" class="btn btn-link" align="left">Back to Home</a>
+      </div>
+
+
+    <div class="container-fluid">
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-warning" role="alert">
+      {{ message }}
+      </div>
+      {% endfor %}
+
+      {% endif %}
+        <div>
+            <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+            <div class="wrapper wrapper-content animated fadeInRight">
+              <div class="alert alert-primary" role="alert">
+                 <h5 align="center">Student Registration Form</h5>
+
+              </div>
+              <div class="alert alert-secondary" align="center">
+      Dear Students, Please complete all required fields in registration form. Otherwise your profile remain incomplete.
+              </div>
+                <div class="row">
+
+                  <div class="col-lg-1"></div>
+                    <div class="col-lg-8">
+
+                                <div class="row">
+
+                                    <div class="col-sm-6 b-r">
+                                        <div class="form-group">
+                                            <label>Name *</label>
+                                            <input type="text" required placeholder="Enter name"  name="name" class="form-control">
+                                        </div>
+                                    <input type="hidden" name="type" value="6">
+                                        <div class="form-group">
+                                            <label>Email *</label>
+                                            <input type="email" name="email" required placeholder="Enter email"  class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="font-bold">Phone No *</label>
+
+
+                                                <input type="text" name="phone_no1" required placeholder="Enter primary phone no"  class="form-control">
+
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label>Gender *</label>
+                                            <select name="gender"class="form-control select2">
+                                                <option  value="Male">Male</option>
+                                                <option  value="Female">Female</option>
+
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Password *</label>
+                                            <input type="password" placeholder="Enter password" required name="password" id="password" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Confirm Password *</label>
+                                            <input type="password" id="con_password" required placeholder="Enter confirm password" class="form-control">
+                                            <span id="pass_msg_div" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Department *</label>
+                                            <select name="department_id" data-validation="required" class="form-control select2">
+                                                <option disabled="" selected="">Department</option>
+                                                                                                <option  value="1">EEE</option>
+                                                                                                    <option  value="3">CSE</option>
+                                                                                                    <option  value="4">ECE</option>
+                                                                                                    <option  value="5">ETE</option>
+                                                                                                    <option  value="6">CE</option>
+                                                                                                    <option  value="7">Architecture</option>
+                                                                                                    <option  value="8">URP</option>
+                                                                                                    <option  value="9">BECM</option>
+                                                                                                    <option  value="10">IPE</option>
+                                                                                                    <option  value="11">GCE</option>
+                                                                                                    <option  value="12">MTE</option>
+                                                                                                    <option  value="13">MSE</option>
+                                                                                                    <option  value="14">ME</option>
+                                                                                                    <option  value="15">CFPE</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Roll No *</label>
+                                            <input type="text" data-validation="required" name="roll_no" required  placeholder="Enter roll no" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Registration No *</label>
+                                            <input type="text" data-validation="required" name="registration_no" required placeholder="Enter registration no"  class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Admission Year *</label>
+                                            <div class="input-group date">
+                                                <input data-validation="required" name="admission_year" required  type="text" class="form-control year_picker" >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Current Year *</label>
+                                            <select name="current_year" required class="form-control select2">
+                                                <option disabled="" selected="">Current Year</option>
+                                              <option  value="1">1st Year</option>
+                                              <option  value="2">2nd Year</option>
+                                              <option  value="3">3rd Year</option>
+                                              <option  value="4">4th Year</option>
+
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Current Semester *</label>
+                                            <select name="current_semester" required class="form-control select2">
+                                                <option disabled="" selected="">Current Semister</option>
+                                                <option  value="1">Odd</option>
+                                              <option  value="2">Even</option>
+
+                                            </select>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button id="submit_btn" type="submit" class="btn btn-w-m btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                    </div>
+
+
+                    <div class="col-lg-3">
+
+
+                               <h5 align="center">Profile Picture</h5>
+
+                               <div class="row">
+                                    <div class="col-sm-12">
+
+                                            <img   class="img-thumbnail rounded mx-auto d-block" src="https://www.freeiconspng.com/uploads/png-file-png-file-png-file-png-file-png-file-27.png"  height=200px width=225px>
+                                            <div class="custom-file">
+                                           <input type="file" class="custom-file-input" id="propic" name="propic">
+                                                <label class="custom-file-label" for="customFile">Select Image</label>
+                                                    </div>
+                                                              </div>
+
+
+                    </div>
+
+                </div>
+                    </div>
+
+                </div>
+
+            </div>
+            </form>
+</div>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+</body>
+</html
